@@ -36,5 +36,36 @@ let part_1 = function() {
     console.log(result);
 }
 
+let checkNumberDiffChars = function(string1, string2) {
+    let i = 0, diff = 0;
 
-part_1();
+    for( ; i < string1.length && i < string2.length ; i++){
+
+        if(string1[i] != string2[i])
+            diff++;
+    }
+
+    if(diff == 1) {
+        let str = '';
+        
+        for(i=0 ; i < string1.length && i < string2.length ; i++){
+            
+            if(string1[i] == string2[i])
+                str += string1[i];
+        }
+        console.log(str);
+    }
+
+}
+
+let part_2 = function() {
+
+    for (let i = 0; i < input.length; i++) {
+        for (let j = i + 1; j < input.length; j++){
+            checkNumberDiffChars(input[i], input[j]);
+        }    
+    }
+}
+
+
+part_2();
