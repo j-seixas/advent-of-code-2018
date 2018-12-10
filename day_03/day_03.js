@@ -32,11 +32,8 @@ checkNumberOverlaps = (arr) => {
 let part_1 = function() {
     let arr = create2Darray();
 
-    
     input2 = input.map(elem => elem.replace(/@|,|x|:|#/g, ' '));
-
     input2.forEach(element => {
-
         
         tmp = element.split(' ');
         for(let i = parseInt(tmp[4]); i < parseInt(tmp[4]) + parseInt(tmp[7]); i++){
@@ -53,4 +50,33 @@ let part_1 = function() {
     checkNumberOverlaps(arr);
 }
 
-part_1();
+
+part_2 = () => {
+    let arr = create2Darray();
+    let overlaped = new Set();
+
+    input2 = input.map(elem => elem.replace(/@|,|x|:|#/g, ' '));
+    input2.forEach(element => {
+        
+        tmp = element.split(' ');
+        for(let i = parseInt(tmp[4]); i < parseInt(tmp[4]) + parseInt(tmp[7]); i++){
+            for(let j = parseInt(tmp[5]); j < parseInt(tmp[5]) + parseInt(tmp[8]); j++){
+                if(arr[i][j] == '.') 
+                    arr[i][j] = tmp[1];
+                else {
+                    overlaped.add(arr[i][j]).add(tmp[1]);
+
+                }
+            }
+        }
+        
+    });
+
+    input2.forEach(element => {
+        temp = element.split(' ');
+        if(!overlaped.has(temp[1]))
+            console.log(temp[1]);
+    });
+}
+
+part_2();
